@@ -158,9 +158,22 @@ assert(counter.dec() === 11, 'counterf failed');
 assert(counter.dec() === 10, 'counterf failed');
 assert(counter.dec() === 9, 'counterf failed');
 
-
-
-
+var revocable = function (func) {
+  var callable = true;
+  return {
+    invoke: function () {
+      if (callable) {
+        return func.apply(null, arguments);
+      }
+      throw new Error('Revoked');
+    },
+    revoke: function () {
+      callable = false;
+    }
+  };
+};
+var temp = revocable(function (x) { return 'alert: ' + x;});
+assert(temp.invoke(7) === 'alert: 7', 'revocable failed');
 
 
 
