@@ -86,7 +86,9 @@ var methodize = function (binary) {
 };
 
 Number.prototype.add = methodize(add);
+Number.prototype.mul = methodize(mul);
 assert((3).add(4) === 7, 'methodize failed');
+assert((3).mul(4) === 12, 'methodize failed');
 
 
 
