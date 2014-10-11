@@ -79,4 +79,21 @@ assert(inc_2(inc_2(5)) === 7, 'inc_2 failed');
 assert(inc_3(5) === 6, 'inc_3 failed');
 assert(inc_3(inc_3(5)) === 7, 'inc_3 failed');
 
+var methodize = function (binary) {
+  return function (x) {
+    return binary.call(null,this, x);
+  };
+};
+
+Number.prototype.add = methodize(add);
+assert((3).add(4) === 7, 'methodize failed');
+
+
+
+
+
+
+
+
+
 
