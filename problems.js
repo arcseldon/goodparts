@@ -62,6 +62,11 @@ var curryf = function (func) {
   };
 };
 
-assert(curryf(addy,3,4)(3) == 10, 'curryf failed');
-assert(curryf(muly,3,4,5)(6) == 360, 'curryf failed');
+assert(curryf(addy,3,4)(3) === 10, 'curryf failed');
+assert(curryf(muly,3,4,5)(6) === 360, 'curryf failed');
+
+var inc = curry(add, 1);
+
+assert(inc(5) === 6, 'inc failed');
+
 
