@@ -97,6 +97,7 @@ var demethodize = function (method) {
 };
 
 assert(demethodize(Number.prototype.add)(5, 6) === 11, 'demethodize failed');
+assert(demethodize(Number.prototype.mul)(5, 6) === 30, 'demethodize failed');
 
 
 
