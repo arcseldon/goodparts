@@ -174,6 +174,7 @@ var revocable = function (func) {
 };
 var temp = revocable(function (x) { return 'alert: ' + x;});
 assert(temp.invoke(7) === 'alert: 7', 'revocable failed');
+assert(temp.invoke(10) === 'alert: 10', 'revocable failed');
 
 
 
