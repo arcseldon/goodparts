@@ -128,4 +128,5 @@ var add_once = function (func) {
   };
 };
 assert(add_once(add)(2,3) === 5, 'add_once failed');
+assert(add_once(addy)(2,3,4) === 9, 'add_once failed');
 
