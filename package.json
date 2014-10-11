@@ -1,0 +1,11 @@
+{
+  "name": "jtgp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "problems.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "arcseldon <arcseldon@gmail.com> (https://twitter.com/arcseldon)",
+  "license": "ISC"
+}
