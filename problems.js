@@ -115,8 +115,12 @@ var composu = function (unary1, unary2) {
 };
 assert(composu(double, square)(3) === 36, 'composu failed');
 
-
-
+var composeb = function (binary1, binary2) {
+  return function(x, y, z) {
+    return binary2(binary1(x,y),z);
+  };
+};
+assert(composeb(add, mul)(2,3,5) === 25, 'composeb failed');
 
 
 
