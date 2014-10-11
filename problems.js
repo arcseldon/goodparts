@@ -180,7 +180,7 @@ var revocable = function (func) {
       if (f === null) {
         throw new Error('Revoked');
       }
-      return f.apply(null, arguments);
+      return f.apply(this, arguments);
     },
     revoke: function () {
       f = null;
