@@ -90,6 +90,13 @@ Number.prototype.mul = methodize(mul);
 assert((3).add(4) === 7, 'methodize failed');
 assert((3).mul(4) === 12, 'methodize failed');
 
+var demethodize = function (method) {
+  return function (x, y) {
+    return method.call(x,y);
+  };
+};
+
+assert(demethodize(Number.prototype.add)(5, 6) === 11, 'demethodize failed');
 
 
 
