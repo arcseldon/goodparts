@@ -65,10 +65,13 @@ var curryf = function (func) {
 assert(curryf(addy,3,4)(3) === 10, 'curryf failed');
 assert(curryf(muly,3,4,5)(6) === 360, 'curryf failed');
 
+var inc_0 = addf(1);
 var inc_1 = curry(add, 1);
 var inc_2 = applyf(add)(1);
 var inc_3 = identity(curry(add,1));
 
+assert(inc_0(5) === 6, 'inc_0 failed');
+assert(inc_0(inc_0(5)) === 7, 'inc_0 failed');
 assert(inc_1(5) === 6, 'inc_1 failed');
 assert(inc_1(inc_1(5)) === 7, 'inc_1 failed');
 assert(inc_2(5) === 6, 'inc_2 failed');
