@@ -142,11 +142,11 @@ assert(add_once(addy)(2,3,4) === 9, 'add_once failed');
 var counterf = function (x) {
   return {
     inc: function () {
-      x = x + 1;
+      x += 1;
       return x;
     },
     dec: function () {
-      x = x - 1;
+      x -= 1;
       return x;
     }
   };
@@ -157,6 +157,9 @@ assert(counter.inc() === 12, 'counterf failed');
 assert(counter.dec() === 11, 'counterf failed');
 assert(counter.dec() === 10, 'counterf failed');
 assert(counter.dec() === 9, 'counterf failed');
+
+
+
 
 
 
