@@ -95,10 +95,18 @@ var demethodize = function (method) {
     return method.call(x,y);
   };
 };
-
 assert(demethodize(Number.prototype.add)(5, 6) === 11, 'demethodize failed');
 assert(demethodize(Number.prototype.mul)(5, 6) === 30, 'demethodize failed');
 
+var twice = function (binary) {
+  return function (x) {
+    return binary(x, x);
+  };
+};
+var double = twice(add);
+var square = twice(mul);
+assert(double(11) === 22, 'twice failed');
+assert(square(11) === 121, 'twice failed');
 
 
 
