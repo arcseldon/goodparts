@@ -123,10 +123,19 @@ var composeb = function (binary1, binary2) {
 assert(composeb(add, mul)(2,3,5) === 25, 'composeb failed');
 
 var add_once = function (func) {
+  var i = 1;
   return function () {
+    if (i > 1) {
+      throw new Error('Already called once');
+    }
+    i += 1;
     return func.apply(null, Array.prototype.slice.call(arguments, 0));
   };
 };
-assert(add_once(add)(2,3) === 5, 'add_once failed');
+var myAddOnce = add_once(add);
+assert(myAddOnce(2,3) === 5, 'add_once failed');
+var failed = false;
+try { myAddOnce(2,3) } catch (e) {failed = true; }
+assert(failed, 'add_once failed');
 assert(add_once(addy)(2,3,4) === 9, 'add_once failed');
 
