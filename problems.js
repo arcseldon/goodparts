@@ -158,17 +158,32 @@ assert(counter.dec() === 11, 'counterf failed');
 assert(counter.dec() === 10, 'counterf failed');
 assert(counter.dec() === 9, 'counterf failed');
 
+// var revocable = function (func) {
+//   var callable = true;
+//   return {
+//     invoke: function () {
+//       if (callable) {
+//         return func.apply(null, arguments);
+//       }
+//       throw new Error('Revoked');
+//     },
+//     revoke: function () {
+//       callable = false;
+//     }
+//   };
+// };
 var revocable = function (func) {
-  var callable = true;
+  var f = func;
+  func = null;
   return {
     invoke: function () {
-      if (callable) {
-        return func.apply(null, arguments);
+      if (f === null) {
+        throw new Error('Revoked');
       }
-      throw new Error('Revoked');
+      return f.apply(null, arguments);
     },
     revoke: function () {
-      callable = false;
+      f = null;
     }
   };
 };
