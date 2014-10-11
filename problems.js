@@ -139,3 +139,26 @@ try { myAddOnce(2,3) } catch (e) {failed = true; }
 assert(failed, 'add_once failed');
 assert(add_once(addy)(2,3,4) === 9, 'add_once failed');
 
+var counterf = function (x) {
+  return {
+    inc: function () {
+      x = x + 1;
+      return x;
+    },
+    dec: function () {
+      x = x - 1;
+      return x;
+    }
+  };
+};
+var counter = counterf(10);
+assert(counter.inc() === 11, 'counterf failed');
+assert(counter.inc() === 12, 'counterf failed');
+assert(counter.dec() === 11, 'counterf failed');
+assert(counter.dec() === 10, 'counterf failed');
+assert(counter.dec() === 9, 'counterf failed');
+
+
+
+
+
