@@ -122,6 +122,10 @@ var composeb = function (binary1, binary2) {
 };
 assert(composeb(add, mul)(2,3,5) === 25, 'composeb failed');
 
-
-
+var add_once = function (func) {
+  return function () {
+    return func.apply(null, Array.prototype.slice.call(arguments, 0));
+  };
+};
+assert(add_once(add)(2,3) === 5, 'add_once failed');
 
