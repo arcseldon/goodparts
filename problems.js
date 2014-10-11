@@ -108,6 +108,12 @@ var square = twice(mul);
 assert(double(11) === 22, 'twice failed');
 assert(square(11) === 121, 'twice failed');
 
+var composu = function (unary1, unary2) {
+  return function (x) {
+    return unary2(unary1(x));
+  };
+};
+assert(composu(double, square)(3) === 36, 'composu failed');
 
 
 
